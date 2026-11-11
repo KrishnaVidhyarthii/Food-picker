@@ -12,6 +12,7 @@ This is our Web Development Lab project. Food Picker is a simple website that he
 - `index.html` – Main Food Picker website
 - `README.md` – Project information
 
+
 ## Technologies Used
 - HTML
 - CSS
@@ -22,7 +23,7 @@ This is our Web Development Lab project. Food Picker is a simple website that he
 ## Team Members
 - Student 1 – Team Lead – Krishna Vidhyarthi – USN: 245
 - Student 2 – Member – Dibakar Das – USN: 295
-- Student 3 - Member - S. Koushik - USN:265
+- Student 3 - Member - Sanapala Koushik - USN:265
 
 ## What We Learned
 - Creating GitHub repositories
