@@ -232,79 +232,333 @@
 
 
         let foods = [
+let foods = [
+    // BREAKFAST - VEGETARIAN
+    {
+        name: "Dosa",
+        category: "breakfast",
+        type: "veg",
+        description: "Crispy South Indian dosa made with rice and lentils.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/A%20Crispy%20Dosa.jpg"
+    },
+    {
+        name: "Idli",
+        category: "breakfast",
+        type: "veg",
+        description: "Soft steamed rice cakes served with chutney.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Idli%20Dosa%20with%20sambar.jpg"
+    },
+    {
+        name: "Poha",
+        category: "breakfast",
+        type: "veg",
+        description: "Flattened rice cooked with onions, peanuts and spices.",
+        image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Upma",
+        category: "breakfast",
+        type: "veg",
+        description: "A delicious South Indian breakfast made with semolina.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Upma.jpg"
+    },
+    {
+        name: "Aloo Paratha",
+        category: "breakfast",
+        type: "veg",
+        description: "Indian flatbread stuffed with spicy mashed potatoes.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Aloo%20Paratha.jpg"
+    },
+    {
+        name: "Puri Bhaji",
+        category: "breakfast",
+        type: "veg",
+        description: "Deep-fried Indian bread served with potato curry.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Poori%20Bhaji.jpg"
+    },
+    {
+        name: "Pancakes",
+        category: "breakfast",
+        type: "veg",
+        description: "Soft and fluffy pancakes served with syrup.",
+        image: "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=1000&q=85"
+    },
 
-            {
-                name: "Dosa",
-                category: "breakfast",
-                type: "veg",
-                description: "Crispy South Indian dosa made with rice and lentils.",
-                image: "images/dosa.jpg"
-            },
+    // BREAKFAST - NON-VEGETARIAN
+    {
+        name: "Omelette",
+        category: "breakfast",
+        type: "nonveg",
+        description: "Eggs cooked with onions and spices.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Egg%20omlete-Mangalore-Karnataka-DSC001.jpg"
+    },
+    {
+        name: "Boiled Eggs",
+        category: "breakfast",
+        type: "nonveg",
+        description: "Healthy boiled eggs seasoned with salt and pepper.",
+        image: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Egg Sandwich",
+        category: "breakfast",
+        type: "nonveg",
+        description: "Bread filled with cooked eggs and fresh vegetables.",
+        image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=1000&q=85"
+    },
 
-            {
-                name: "Idli",
-                category: "breakfast",
-                type: "veg",
-                description: "Soft steamed rice cakes served with chutney.",
-                image: "images/idli.jpg"
-            },
+    // LUNCH - VEGETARIAN
+    {
+        name: "Paneer Rice",
+        category: "lunch",
+        type: "veg",
+        description: "Rice served with paneer and Indian spices.",
+        image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Veg Pulao",
+        category: "lunch",
+        type: "veg",
+        description: "Flavourful rice cooked with vegetables and spices.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Veg%20Pulao.jpg"
+    },
+    {
+        name: "Chole Bhature",
+        category: "lunch",
+        type: "veg",
+        description: "Spicy chickpea curry served with fluffy fried bread.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Chole%20Bhature.jpg"
+    },
+    {
+        name: "Rajma Chawal",
+        category: "lunch",
+        type: "veg",
+        description: "Kidney bean curry served with steamed rice.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Rajma%20Chawal.jpg"
+    },
+    {
+        name: "Masala Dosa",
+        category: "lunch",
+        type: "veg",
+        description: "Crispy dosa filled with spicy potato masala.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Masala%20Dosa.jpg"
+    },
+    {
+        name: "Veg Fried Rice",
+        category: "lunch",
+        type: "veg",
+        description: "Rice stir-fried with vegetables and sauces.",
+        image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Paneer Butter Masala",
+        category: "lunch",
+        type: "veg",
+        description: "Paneer cubes cooked in a rich creamy tomato gravy.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Paneer%20Butter%20Masala.jpg"
+    },
+    {
+        name: "Veg Biryani",
+        category: "lunch",
+        type: "veg",
+        description: "Aromatic basmati rice cooked with vegetables and spices.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Vegetable%20Biryani.jpg"
+    },
 
-            {
-                name: "Omelette",
-                category: "breakfast",
-                type: "nonveg",
-                description: "Eggs cooked with onions and spices.",
-                image: "images/omelette.jpg"
-            },
+    // LUNCH - NON-VEGETARIAN
+    {
+        name: "Biryani",
+        category: "lunch",
+        type: "nonveg",
+        description: "Flavourful rice cooked with meat and spices.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Food-Chicken-Biryani.jpg"
+    },
+    {
+        name: "Chicken Fried Rice",
+        category: "lunch",
+        type: "nonveg",
+        description: "Fried rice mixed with chicken, eggs and vegetables.",
+        image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Fish Curry Rice",
+        category: "lunch",
+        type: "nonveg",
+        description: "Traditional fish curry served with steamed rice.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Fish%20curry.jpg"
+    },
+    {
+        name: "Chicken Thali",
+        category: "lunch",
+        type: "nonveg",
+        description: "A complete Indian meal with chicken curry, rice and sides.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Indian%20thali.jpg"
+    },
+    {
+        name: "Egg Curry",
+        category: "lunch",
+        type: "nonveg",
+        description: "Boiled eggs cooked in a spicy Indian gravy.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Egg%20Curry.jpg"
+    },
 
-            {
-                name: "Biryani",
-                category: "lunch",
-                type: "nonveg",
-                description: "Flavourful rice cooked with meat and spices.",
-                image: "images/biryani.jpg"
-            },
+    // DINNER - VEGETARIAN
+    {
+        name: "Pizza",
+        category: "dinner",
+        type: "veg",
+        description: "Pizza topped with cheese and vegetables.",
+        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Veg Noodles",
+        category: "dinner",
+        type: "veg",
+        description: "Stir-fried noodles with fresh vegetables.",
+        image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Pav Bhaji",
+        category: "dinner",
+        type: "veg",
+        description: "Spicy mashed vegetable curry served with buttered bread.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Pav%20Bhaji.jpg"
+    },
+    {
+        name: "Mushroom Masala",
+        category: "dinner",
+        type: "veg",
+        description: "Mushrooms cooked in a flavourful Indian gravy.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Mushroom%20masala.jpg"
+    },
+    {
+        name: "White Sauce Pasta",
+        category: "dinner",
+        type: "veg",
+        description: "Creamy pasta cooked with herbs and vegetables.",
+        image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Veg Manchurian",
+        category: "dinner",
+        type: "veg",
+        description: "Crispy vegetable balls tossed in a spicy sauce.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Veg%20Manchurian.jpg"
+    },
 
-            {
-                name: "Paneer Rice",
-                category: "lunch",
-                type: "veg",
-                description: "Rice served with paneer and Indian spices.",
-                image: "images/paneer.jpg"
-            },
+    // DINNER - NON-VEGETARIAN
+    {
+        name: "Chicken Curry",
+        category: "dinner",
+        type: "nonveg",
+        description: "Chicken cooked in delicious Indian spices.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20Curry.JPG"
+    },
+    {
+        name: "Butter Chicken",
+        category: "dinner",
+        type: "nonveg",
+        description: "Tender chicken cooked in a creamy tomato gravy.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Butter%20Chicken.jpg"
+    },
+    {
+        name: "Chicken Noodles",
+        category: "dinner",
+        type: "nonveg",
+        description: "Stir-fried noodles with chicken and vegetables.",
+        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Grilled Fish",
+        category: "dinner",
+        type: "nonveg",
+        description: "Fresh fish grilled with herbs and spices.",
+        image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=85"
+    },
 
-            {
-                name: "Pizza",
-                category: "dinner",
-                type: "veg",
-                description: "Pizza topped with cheese and vegetables.",
-                image: "images/pizza.jpg"
-            },
+    // SNACKS - VEGETARIAN
+    {
+        name: "Samosa",
+        category: "snacks",
+        type: "veg",
+        description: "Crispy pastry filled with spicy potatoes.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Indian%20samosa.jpg"
+    },
+    {
+        name: "Burger",
+        category: "snacks",
+        type: "veg",
+        description: "Burger filled with vegetables and sauce.",
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "French Fries",
+        category: "snacks",
+        type: "veg",
+        description: "Crispy golden potato fries.",
+        image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Spring Rolls",
+        category: "snacks",
+        type: "veg",
+        description: "Crispy rolls filled with vegetables.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Spring%20rolls.jpg"
+    },
+    {
+        name: "Pani Puri",
+        category: "snacks",
+        type: "veg",
+        description: "Crispy puris filled with spicy and tangy water.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Panipuri.jpg"
+    },
+    {
+        name: "Dhokla",
+        category: "snacks",
+        type: "veg",
+        description: "Soft and fluffy Gujarati steamed snack.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Dhokla.jpg"
+    },
+    {
+        name: "Vada Pav",
+        category: "snacks",
+        type: "veg",
+        description: "Mumbai-style potato fritter served in a bun.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Vada%20Pav.jpg"
+    },
+    {
+        name: "Cheese Sandwich",
+        category: "snacks",
+        type: "veg",
+        description: "Toasted bread filled with melted cheese.",
+        image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1000&q=85"
+    },
 
-            {
-                name: "Chicken Curry",
-                category: "dinner",
-                type: "nonveg",
-                description: "Chicken cooked in delicious Indian spices.",
-                image: "images/chicken.jpg"
-            },
-
-            {
-                name: "Samosa",
-                category: "snacks",
-                type: "veg",
-                description: "Crispy pastry filled with spicy potatoes.",
-                image: "images/samosa.jpg"
-            },
-
-            {
-                name: "Burger",
-                category: "snacks",
-                type: "veg",
-                description: "Burger filled with vegetables and sauce.",
-                image: "images/burger.jpg"
-            }
-
+    // SNACKS - NON-VEGETARIAN
+    {
+        name: "Chicken Nuggets",
+        category: "snacks",
+        type: "nonveg",
+        description: "Crispy chicken bites served with a dipping sauce.",
+        image: "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Chicken Sandwich",
+        category: "snacks",
+        type: "nonveg",
+        description: "Sandwich filled with seasoned chicken.",
+        image: "https://images.unsplash.com/photo-1553909489-cd47e0ef937f?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+        name: "Fish Fingers",
+        category: "snacks",
+        type: "nonveg",
+        description: "Crispy fish strips served with a dip.",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Fish%20fingers.jpg"
+    }
+];
+           
+         
         ];
 
 
