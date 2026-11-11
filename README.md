@@ -33,6 +33,6 @@ This is our Web Development Lab project. Food Picker is a simple website that he
 - Building a website using HTML, CSS, and JavaScript
 
 ## Future expected changes
--Adding a welcome state:  Instead of showing only "Your food will appear here!", we want to show a small instruction explaining how to use the filters.
--Improve the random selection: Currently, Try Again can select the exact same food again. We should prevent that when multiple choices are available.
--Better food photograph and more food recommendations.
+-Adding a welcome state:  Instead of showing only "Your food will appear here!", we want to show a small instruction explaining how to use the filters
+-Improve the random selection: Currently, Try Again can select the exact same food again. We should prevent that when multiple choices are available
+-Better food photograph and more food recommendations
