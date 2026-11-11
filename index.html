@@ -8,104 +8,113 @@
     <title>Food Picker</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #fff0dc;
-            text-align: center;
             margin: 0;
-            padding: 25px;
+            min-height: 100vh;
+            padding: 30px 16px 48px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #fff0dc;
+            background-color: #160d0d;
+            background-image: linear-gradient(rgba(18, 8, 8, 0.78), rgba(35, 13, 12, 0.72)),
+                url("https://media1.tenor.com/m/fWy0Ufdg9dcAAAAd/wtf-so-delicious-yummy.gif");
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
         }
 
         h1 {
-            color: #a84300;
-            font-size: 42px;
-        }
-
-        .subtitle {
-            color: #704323;
-            font-size: 18px;
-        }
-
-        .container {
-            background-color: white;
-            max-width: 550px;
-            margin: 30px auto;
-            padding: 25px;
-            border-radius: 18px;
-            border: 2px solid #ffc078;
-            box-shadow: 0 4px 12px rgba(120, 60, 0, 0.12);
+            margin: 10px 0;
+            color: #f4d7a1;
+            font-size: 48px;
         }
 
         h2 {
-            color: #a84300;
+            color: #f4d7a1;
+        }
+
+        .subtitle {
+            color: #f0d8c7;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .container, .favourite {
+            max-width: 650px;
+            margin: 24px auto;
+            padding: 25px;
+            border: 1px solid #a94c39;
+            border-radius: 18px;
+            background: rgba(20, 13, 14, 0.93);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
         select {
             width: 90%;
-            padding: 12px;
-            margin: 10px;
-            border: 1px solid #e99a50;
-            border-radius: 7px;
+            max-width: 440px;
+            margin: 9px;
+            padding: 13px;
+            border: 1px solid #a94c39;
+            border-radius: 9px;
+            background: #301917;
+            color: #fff0dc;
             font-size: 16px;
-            background-color: #fffaf3;
         }
 
         button {
-            background-color: #f58220;
-            color: white;
-            border: none;
+            margin: 8px 5px;
             padding: 12px 20px;
-            margin: 8px;
-            border-radius: 7px;
+            border: none;
+            border-radius: 9px;
+            background: #d9573f;
+            color: white;
             font-size: 15px;
+            font-weight: bold;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #d9680b;
+            background: #f07850;
         }
 
         .food-card {
-            background-color: #fff5e9;
             margin-top: 25px;
             padding: 20px;
-            border-radius: 12px;
+            border: 1px solid #713b30;
+            border-radius: 15px;
+            background: rgba(34, 19, 18, 0.96);
         }
 
         .food-card img {
             width: 100%;
-            max-width: 350px;
-            height: 230px;
+            max-width: 430px;
+            height: 270px;
+            margin: 12px auto 16px;
             object-fit: cover;
-            border-radius: 10px;
-            margin-top: 10px;
+            border-radius: 12px;
+            border: 2px solid #a94c39;
+            filter: brightness(0.85) contrast(1.08) saturate(1.1);
         }
 
         #result {
-            color: #a84300;
-            font-size: 23px;
+            color: #f4d7a1;
+            font-size: 25px;
             font-weight: bold;
         }
 
         #description {
-            color: #60452f;
+            color: #e4d0c5;
             font-size: 16px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         #foodType {
-            color: #8b4a16;
+            color: #f28a65;
             font-weight: bold;
-        }
-
-        .favourite {
-            background-color: white;
-            max-width: 550px;
-            margin: 25px auto;
-            padding: 20px;
-            border-radius: 15px;
-            border: 2px solid #ffc078;
         }
 
         .favourite ul {
@@ -115,38 +124,29 @@
         .favourite li {
             list-style: none;
             margin: 12px;
-            color: #704323;
+            color: #f4dfd1;
             font-weight: bold;
         }
 
         .remove-button {
-            background-color: #c94c3b;
+            background: #7f302b;
             padding: 8px 12px;
         }
 
         @media (max-width: 600px) {
-
             body {
-                padding: 12px;
-            }
-
-            h1 {
-                font-size: 32px;
+                padding: 18px 10px 30px;
+                background-attachment: scroll;
             }
 
             .container, .favourite {
-                padding: 15px;
+                padding: 17px;
             }
 
             .food-card img {
-                height: 190px;
-            }
-
-            button {
-                padding: 11px 14px;
+                height: 210px;
             }
         }
-
     </style>
 
 </head>
@@ -185,18 +185,18 @@
 
         <br>
 
-        <button onclick="pickFood()">
+        <button onclick="chooseFood(false)">
             Suggest My Food
         </button>
 
-        <button onclick="luckyFood()">
+        <button onclick="chooseFood(true)">
             Surprise Me!
         </button>
 
         <div class="food-card">
 
             <img id="foodImage" style="display:none;"
-                 alt="Food Image">
+                 alt="Photograph of the recommended dish">
 
             <p id="result">
                 Your food will appear here!
@@ -227,291 +227,183 @@
 
     </div>
 
+    <p style="color:#b8a995;font-size:12px;max-width:650px;margin:18px auto;">
+        Real food photographs are styled with a warm, low-light finish to match the pizza-inspired theme. Photos load from Wikimedia Commons and Unsplash, so an internet connection is required.
+    </p>
 
     <script>
-
-
+        // This array stores all the food choices.
         let foods = [
-
             {
                 name: "Dosa",
                 category: "breakfast",
                 type: "veg",
                 description: "Crispy South Indian dosa made with rice and lentils.",
-                image: "images/dosa.jpg"
+                image: "https://commons.wikimedia.org/wiki/Special:FilePath/A%20Crispy%20Dosa.jpg"
             },
-
             {
                 name: "Idli",
                 category: "breakfast",
                 type: "veg",
                 description: "Soft steamed rice cakes served with chutney.",
-                image: "images/idli.jpg"
+                image: "https://commons.wikimedia.org/wiki/Special:FilePath/Idli%20Dosa%20with%20sambar.jpg"
             },
-
             {
                 name: "Omelette",
                 category: "breakfast",
                 type: "nonveg",
                 description: "Eggs cooked with onions and spices.",
-                image: "images/omelette.jpg"
+                image: "https://commons.wikimedia.org/wiki/Special:FilePath/Egg%20omlete-Mangalore-Karnataka-DSC001.jpg"
             },
-
             {
                 name: "Biryani",
                 category: "lunch",
                 type: "nonveg",
                 description: "Flavourful rice cooked with meat and spices.",
-                image: "images/biryani.jpg"
+                image: "https://commons.wikimedia.org/wiki/Special:FilePath/Food-Chicken-Biryani.jpg"
             },
-
             {
                 name: "Paneer Rice",
                 category: "lunch",
                 type: "veg",
                 description: "Rice served with paneer and Indian spices.",
-                image: "images/paneer.jpg"
+                image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=1000&q=85"
             },
-
             {
                 name: "Pizza",
                 category: "dinner",
                 type: "veg",
                 description: "Pizza topped with cheese and vegetables.",
-                image: "images/pizza.jpg"
+                image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=85"
             },
-
             {
                 name: "Chicken Curry",
                 category: "dinner",
                 type: "nonveg",
                 description: "Chicken cooked in delicious Indian spices.",
-                image: "images/chicken.jpg"
+                image: "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20Curry.JPG"
             },
-
             {
                 name: "Samosa",
                 category: "snacks",
                 type: "veg",
                 description: "Crispy pastry filled with spicy potatoes.",
-                image: "images/samosa.jpg"
+                image: "https://commons.wikimedia.org/wiki/Special:FilePath/Indian%20samosa.jpg"
             },
-
             {
                 name: "Burger",
                 category: "snacks",
                 type: "veg",
                 description: "Burger filled with vegetables and sauce.",
-                image: "images/burger.jpg"
+                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85"
             }
-
         ];
 
-
         let selectedFood = null;
-
         let favourites = [];
+        let surpriseMode = false;
 
-        let currentMode = "normal";
+        // Picks a food using the selected category and food type.
+        function chooseFood(isSurprise) {
+            surpriseMode = isSurprise;
 
-        function pickFood() {
+            let category = document.getElementById("category").value;
+            let type = document.getElementById("type").value;
+            let availableFoods = [];
 
-            currentMode = "normal";
+            // Check each food and keep the ones that match the selections.
+            for (let i = 0; i < foods.length; i++) {
+                let food = foods[i];
 
-            let category =
-                document.getElementById("category").value;
+                let matchesCategory = isSurprise || category == "all" || food.category == category;
+                let matchesType = type == "all" || food.type == type;
 
-            let type =
-                document.getElementById("type").value;
-
-            let filteredFoods = foods.filter(function(food) {
-
-                return (category == "all" ||
-                    food.category == category) &&
-                    (type == "all" ||
-                    food.type == type);
-
-            });
-
-            showRandomFood(filteredFoods);
-
-        }
-
-
-
-        function luckyFood() {
-
-            currentMode = "lucky";
-
-            let type =
-                document.getElementById("type").value;
-
-            let filteredFoods = foods.filter(function(food) {
-
-                return type == "all" || food.type == type;
-
-            });
-
-            showRandomFood(filteredFoods);
-
-        }
-
-
-        function showRandomFood(foodList) {
-
-            if (foodList.length == 0) {
-
-                document.getElementById("result").textContent =
-                    "No food found!";
-
-                document.getElementById("foodImage").style.display =
-                    "none";
-
-                document.getElementById("description").textContent = "";
-
-                document.getElementById("foodType").textContent = "";
-
-                return;
-
+                if (matchesCategory && matchesType) {
+                    availableFoods.push(food);
+                }
             }
-
-
-            let availableFoods = foodList.filter(function(food) {
-
-                return food !== selectedFood;
-
-            });
 
             if (availableFoods.length == 0) {
-
-                availableFoods = foodList;
-
+                document.getElementById("result").textContent = "No food found!";
+                document.getElementById("foodImage").style.display = "none";
+                document.getElementById("description").textContent = "Try changing your filters.";
+                document.getElementById("foodType").textContent = "";
+                selectedFood = null;
+                return;
             }
 
-            let randomNumber = Math.floor(
-                Math.random() * availableFoods.length
-            );
-
+            // Choose one random food from the matching foods.
+            let randomNumber = Math.floor(Math.random() * availableFoods.length);
             selectedFood = availableFoods[randomNumber];
 
+            document.getElementById("result").textContent = "You should eat: " + selectedFood.name;
+            document.getElementById("description").textContent = selectedFood.description;
 
-            document.getElementById("result").textContent =
-                "You should eat: " + selectedFood.name;
-
-
-            document.getElementById("description").textContent =
-                selectedFood.description;
-
-
-            document.getElementById("foodType").textContent =
-                selectedFood.type == "veg"
-                ? "Vegetarian"
-                : "Non-Vegetarian";
-
-
+            if (selectedFood.type == "veg") {
+                document.getElementById("foodType").textContent = "Vegetarian";
+            } else {
+                document.getElementById("foodType").textContent = "Non-Vegetarian";
+            }
 
             let image = document.getElementById("foodImage");
-
             image.style.display = "none";
-
-            image.onerror = function() {
+            image.onerror = function () {
                 image.style.display = "none";
+                document.getElementById("description").textContent = selectedFood.description + " (Photo could not load.)";
             };
-
-            image.onload = function() {
+            image.onload = function () {
                 image.style.display = "block";
             };
-
             image.src = selectedFood.image;
-
         }
 
-
-
+        // Try Again uses the same mode as the previous suggestion.
         function tryAgain() {
-
-            if (currentMode == "lucky") {
-
-                luckyFood();
-
-            } else {
-
-                pickFood();
-
-            }
-
+            chooseFood(surpriseMode);
         }
 
-
+        // Adds the selected food to the favourites list.
         function addFavourite() {
-
             if (selectedFood == null) {
-
                 alert("Please select a food first!");
-
                 return;
-
             }
 
-            if (!favourites.includes(selectedFood)) {
-
-                favourites.push(selectedFood);
-
-                displayFavourites();
-
-            } else {
-
+            if (favourites.includes(selectedFood)) {
                 alert("This food is already in your favourites!");
-
+                return;
             }
 
+            favourites.push(selectedFood);
+            displayFavourites();
         }
 
-
+        // Shows all favourite foods on the page.
         function displayFavourites() {
-
-            let list =
-                document.getElementById("favourites");
-
+            let list = document.getElementById("favourites");
             list.innerHTML = "";
 
-            favourites.forEach(function(food, index) {
-
+            for (let i = 0; i < favourites.length; i++) {
                 let item = document.createElement("li");
+                item.textContent = favourites[i].name + " ";
 
-                item.textContent = food.name + " ";
-
-                let removeButton =
-                    document.createElement("button");
-
+                let removeButton = document.createElement("button");
                 removeButton.textContent = "Remove";
-
                 removeButton.className = "remove-button";
-
-                removeButton.onclick = function() {
-
-                    removeFavourite(index);
-
+                removeButton.onclick = function () {
+                    removeFavourite(i);
                 };
 
                 item.appendChild(removeButton);
-
                 list.appendChild(item);
-
-            });
-
+            }
         }
 
-
-
+        // Removes one food from the favourites list.
         function removeFavourite(index) {
-
             favourites.splice(index, 1);
-
             displayFavourites();
-
         }
-
     </script>
 
 </body>
