@@ -303,7 +303,7 @@
         let favourites = [];
         let surpriseMode = false;
 
-        // Picks a food using the selected category and food type.
+        
         function chooseFood(isSurprise) {
             surpriseMode = isSurprise;
 
@@ -311,7 +311,7 @@
             let type = document.getElementById("type").value;
             let availableFoods = [];
 
-            // Check each food and keep the ones that match the selections.
+            
             for (let i = 0; i < foods.length; i++) {
                 let food = foods[i];
 
@@ -332,7 +332,7 @@
                 return;
             }
 
-            // Choose one random food from the matching foods.
+           
             let randomNumber = Math.floor(Math.random() * availableFoods.length);
             selectedFood = availableFoods[randomNumber];
 
@@ -362,7 +362,7 @@
             chooseFood(surpriseMode);
         }
 
-        // Adds the selected food to the favourites list.
+       
         function addFavourite() {
             if (selectedFood == null) {
                 alert("Please select a food first!");
@@ -378,7 +378,7 @@
             displayFavourites();
         }
 
-        // Shows all favourite foods on the page.
+       
         function displayFavourites() {
             let list = document.getElementById("favourites");
             list.innerHTML = "";
@@ -399,7 +399,7 @@
             }
         }
 
-        // Removes one food from the favourites list.
+        
         function removeFavourite(index) {
             favourites.splice(index, 1);
             displayFavourites();
