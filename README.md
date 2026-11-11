@@ -4,7 +4,8 @@ This is our Web Development Lab project. Food Picker is a simple website that he
 
 ## How to Access
 - Click on the GitHub Pages link provided in the About section to open the website.
-![Uploading Screenshot 2026-11-11 at 14.57.29.png…]()
+<img width="486" height="414" alt="Screenshot 2026-11-11 at 14 57 29" src="https://github.com/user-attachments/assets/8f924d7e-a4dd-4b36-a64f-8ae8e31d8025" />
+
 
 
 ## Files
