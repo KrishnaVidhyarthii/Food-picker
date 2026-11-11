@@ -227,10 +227,6 @@
 
     </div>
 
-    <p style="color:#b8a995;font-size:12px;max-width:650px;margin:18px auto;">
-        Real food photographs are styled with a warm, low-light finish to match the pizza-inspired theme. Photos load from Wikimedia Commons and Unsplash, so an internet connection is required.
-    </p>
-
     <script>
         // This array stores all the food choices.
         let foods = [
@@ -303,7 +299,6 @@
         let favourites = [];
         let surpriseMode = false;
 
-        // Picks a food using the selected category and food type.
         function chooseFood(isSurprise) {
             surpriseMode = isSurprise;
 
@@ -311,7 +306,6 @@
             let type = document.getElementById("type").value;
             let availableFoods = [];
 
-            // Check each food and keep the ones that match the selections.
             for (let i = 0; i < foods.length; i++) {
                 let food = foods[i];
 
@@ -332,7 +326,6 @@
                 return;
             }
 
-            // Choose one random food from the matching foods.
             let randomNumber = Math.floor(Math.random() * availableFoods.length);
             selectedFood = availableFoods[randomNumber];
 
@@ -357,12 +350,10 @@
             image.src = selectedFood.image;
         }
 
-        // Try Again uses the same mode as the previous suggestion.
         function tryAgain() {
             chooseFood(surpriseMode);
         }
 
-        // Adds the selected food to the favourites list.
         function addFavourite() {
             if (selectedFood == null) {
                 alert("Please select a food first!");
@@ -378,7 +369,6 @@
             displayFavourites();
         }
 
-        // Shows all favourite foods on the page.
         function displayFavourites() {
             let list = document.getElementById("favourites");
             list.innerHTML = "";
@@ -399,7 +389,6 @@
             }
         }
 
-        // Removes one food from the favourites list.
         function removeFavourite(index) {
             favourites.splice(index, 1);
             displayFavourites();
