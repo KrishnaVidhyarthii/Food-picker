@@ -1,4 +1,4 @@
-# Food Picker – Team 020308
+# Food Picker – Team Foodpecker
 
 This is our Web Development Lab project. Food Picker is a simple website that helps users decide what to eat by suggesting random food items based on their selected meal category, such as breakfast, lunch, snacks, or dinner.
 
