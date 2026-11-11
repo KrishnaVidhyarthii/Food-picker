@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Picker</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #fff3e6;
+            text-align: center;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #e67300;
+        }
+
+        .container {
+            background-color: white;
+            width: 80%;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        select {
+            padding: 10px;
+            width: 80%;
+            margin: 15px;
+        }
+
+        button {
+            background-color: #ff9933;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e67300;
+        }
+
+        #result {
+            color: #e67300;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🍕 Food Picker</h1>
+    <p>Can't decide what to eat? Let us choose for you!</p>
+
+    <div class="container">
+
+        <h2>Choose a Category</h2>
+
+        <select id="category">
+            <option value="all">All Foods</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snacks">Snacks</option>
+        </select>
+
+        <br>
+
+        <button onclick="pickFood()">Pick My Food!</button>
+
+        <p id="result">Your food will appear here!</p>
+
+    </div>
+
+    <script>
+
+        let foods = {
+            breakfast: ["Dosa", "Idli", "Poha", "Paratha"],
+            lunch: ["Biryani", "Fried Rice", "Thali", "Paneer Rice"],
+            dinner: ["Pizza", "Pasta", "Roti and Curry", "Noodles"],
+            snacks: ["Samosa", "Sandwich", "Burger", "French Fries"]
+        };
+
+        function pickFood() {
+
+            let category = document.getElementById("category").value;
+
+            let foodList = [];
+
+            if (category == "all") {
+
+                foodList = foods.breakfast.concat(
+                    foods.lunch,
+                    foods.dinner,
+                    foods.snacks
+                );
+
+            } else {
+
+                foodList = foods[category];
+
+            }
+
+            let randomNumber = Math.floor(Math.random() * foodList.length);
+
+            let selectedFood = foodList[randomNumber];
+
+            document.getElementById("result").innerHTML =
+                "You should eat: " + selectedFood + " 😋";
+        }
+
+    </script>
+
+</body>
+</html>
