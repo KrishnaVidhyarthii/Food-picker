@@ -1,122 +1,519 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+
     <title>Food Picker</title>
 
     <style>
+
         body {
-            font-family: Arial;
-            background-color: #fff3e6;
+            font-family: Arial, sans-serif;
+            background-color: #fff0dc;
             text-align: center;
             margin: 0;
-            padding: 30px;
+            padding: 25px;
         }
 
         h1 {
-            color: #e67300;
+            color: #a84300;
+            font-size: 42px;
+        }
+
+        .subtitle {
+            color: #704323;
+            font-size: 18px;
         }
 
         .container {
             background-color: white;
-            width: 80%;
-            max-width: 400px;
+            max-width: 550px;
             margin: 30px auto;
             padding: 25px;
-            border-radius: 10px;
+            border-radius: 18px;
+            border: 2px solid #ffc078;
+            box-shadow: 0 4px 12px rgba(120, 60, 0, 0.12);
+        }
+
+        h2 {
+            color: #a84300;
         }
 
         select {
-            padding: 10px;
-            width: 80%;
-            margin: 15px;
+            width: 90%;
+            padding: 12px;
+            margin: 10px;
+            border: 1px solid #e99a50;
+            border-radius: 7px;
+            font-size: 16px;
+            background-color: #fffaf3;
         }
 
         button {
-            background-color: #ff9933;
+            background-color: #f58220;
             color: white;
             border: none;
             padding: 12px 20px;
-            border-radius: 5px;
+            margin: 8px;
+            border-radius: 7px;
+            font-size: 15px;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #e67300;
+            background-color: #d9680b;
+        }
+
+        .food-card {
+            background-color: #fff5e9;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .food-card img {
+            width: 100%;
+            max-width: 350px;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 10px;
         }
 
         #result {
-            color: #e67300;
-            font-size: 22px;
+            color: #a84300;
+            font-size: 23px;
             font-weight: bold;
-            margin-top: 20px;
         }
+
+        #description {
+            color: #60452f;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        #foodType {
+            color: #8b4a16;
+            font-weight: bold;
+        }
+
+        .favourite {
+            background-color: white;
+            max-width: 550px;
+            margin: 25px auto;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #ffc078;
+        }
+
+        .favourite ul {
+            padding: 0;
+        }
+
+        .favourite li {
+            list-style: none;
+            margin: 12px;
+            color: #704323;
+            font-weight: bold;
+        }
+
+        .remove-button {
+            background-color: #c94c3b;
+            padding: 8px 12px;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .container, .favourite {
+                padding: 15px;
+            }
+
+            .food-card img {
+                height: 190px;
+            }
+
+            button {
+                padding: 11px 14px;
+            }
+        }
+
     </style>
+
 </head>
 
 <body>
 
-    <h1>🍕 Food Picker</h1>
-    <p>Can't decide what to eat? Let us choose for you!</p>
+    <h1>Food Picker</h1>
+
+    <p class="subtitle">
+        Delicious ideas for your next meal!
+    </p>
 
     <div class="container">
 
-        <h2>Choose a Category</h2>
+        <h2>What Would You Like to Eat?</h2>
 
         <select id="category">
-            <option value="all">All Foods</option>
+
+            <option value="all">All Categories</option>
             <option value="breakfast">Breakfast</option>
             <option value="lunch">Lunch</option>
             <option value="dinner">Dinner</option>
             <option value="snacks">Snacks</option>
+
         </select>
 
         <br>
 
-        <button onclick="pickFood()">Pick My Food!</button>
+        <select id="type">
 
-        <p id="result">Your food will appear here!</p>
+            <option value="all">All Food Types</option>
+            <option value="veg">Vegetarian</option>
+            <option value="nonveg">Non-Vegetarian</option>
+
+        </select>
+
+        <br>
+
+        <button onclick="pickFood()">
+            Suggest My Food
+        </button>
+
+        <button onclick="luckyFood()">
+            Surprise Me!
+        </button>
+
+        <div class="food-card">
+
+            <img id="foodImage" style="display:none;"
+                 alt="Food Image">
+
+            <p id="result">
+                Your food will appear here!
+            </p>
+
+            <p id="description"></p>
+
+            <p id="foodType"></p>
+
+            <button onclick="addFavourite()">
+                Add to Favourite
+            </button>
+
+            <button onclick="tryAgain()">
+                Try Again
+            </button>
+
+        </div>
 
     </div>
 
+
+    <div class="favourite">
+
+        <h2>My Favourite Foods</h2>
+
+        <ul id="favourites"></ul>
+
+    </div>
+
+
     <script>
 
-        let foods = {
-            breakfast: ["Dosa", "Idli", "Poha", "Paratha"],
-            lunch: ["Biryani", "Fried Rice", "Thali", "Paneer Rice"],
-            dinner: ["Pizza", "Pasta", "Roti and Curry", "Noodles"],
-            snacks: ["Samosa", "Sandwich", "Burger", "French Fries"]
-        };
+
+        let foods = [
+
+            {
+                name: "Dosa",
+                category: "breakfast",
+                type: "veg",
+                description: "Crispy South Indian dosa made with rice and lentils.",
+                image: "images/dosa.jpg"
+            },
+
+            {
+                name: "Idli",
+                category: "breakfast",
+                type: "veg",
+                description: "Soft steamed rice cakes served with chutney.",
+                image: "images/idli.jpg"
+            },
+
+            {
+                name: "Omelette",
+                category: "breakfast",
+                type: "nonveg",
+                description: "Eggs cooked with onions and spices.",
+                image: "images/omelette.jpg"
+            },
+
+            {
+                name: "Biryani",
+                category: "lunch",
+                type: "nonveg",
+                description: "Flavourful rice cooked with meat and spices.",
+                image: "images/biryani.jpg"
+            },
+
+            {
+                name: "Paneer Rice",
+                category: "lunch",
+                type: "veg",
+                description: "Rice served with paneer and Indian spices.",
+                image: "images/paneer.jpg"
+            },
+
+            {
+                name: "Pizza",
+                category: "dinner",
+                type: "veg",
+                description: "Pizza topped with cheese and vegetables.",
+                image: "images/pizza.jpg"
+            },
+
+            {
+                name: "Chicken Curry",
+                category: "dinner",
+                type: "nonveg",
+                description: "Chicken cooked in delicious Indian spices.",
+                image: "images/chicken.jpg"
+            },
+
+            {
+                name: "Samosa",
+                category: "snacks",
+                type: "veg",
+                description: "Crispy pastry filled with spicy potatoes.",
+                image: "images/samosa.jpg"
+            },
+
+            {
+                name: "Burger",
+                category: "snacks",
+                type: "veg",
+                description: "Burger filled with vegetables and sauce.",
+                image: "images/burger.jpg"
+            }
+
+        ];
+
+
+        let selectedFood = null;
+
+        let favourites = [];
+
+        let currentMode = "normal";
 
         function pickFood() {
 
-            let category = document.getElementById("category").value;
+            currentMode = "normal";
 
-            let foodList = [];
+            let category =
+                document.getElementById("category").value;
 
-            if (category == "all") {
+            let type =
+                document.getElementById("type").value;
 
-                foodList = foods.breakfast.concat(
-                    foods.lunch,
-                    foods.dinner,
-                    foods.snacks
-                );
+            let filteredFoods = foods.filter(function(food) {
 
-            } else {
+                return (category == "all" ||
+                    food.category == category) &&
+                    (type == "all" ||
+                    food.type == type);
 
-                foodList = foods[category];
+            });
+
+            showRandomFood(filteredFoods);
+
+        }
+
+
+
+        function luckyFood() {
+
+            currentMode = "lucky";
+
+            let type =
+                document.getElementById("type").value;
+
+            let filteredFoods = foods.filter(function(food) {
+
+                return type == "all" || food.type == type;
+
+            });
+
+            showRandomFood(filteredFoods);
+
+        }
+
+
+        function showRandomFood(foodList) {
+
+            if (foodList.length == 0) {
+
+                document.getElementById("result").textContent =
+                    "No food found!";
+
+                document.getElementById("foodImage").style.display =
+                    "none";
+
+                document.getElementById("description").textContent = "";
+
+                document.getElementById("foodType").textContent = "";
+
+                return;
 
             }
 
-            let randomNumber = Math.floor(Math.random() * foodList.length);
 
-            let selectedFood = foodList[randomNumber];
+            let availableFoods = foodList.filter(function(food) {
 
-            document.getElementById("result").innerHTML =
-                "You should eat: " + selectedFood + " 😋";
+                return food !== selectedFood;
+
+            });
+
+            if (availableFoods.length == 0) {
+
+                availableFoods = foodList;
+
+            }
+
+            let randomNumber = Math.floor(
+                Math.random() * availableFoods.length
+            );
+
+            selectedFood = availableFoods[randomNumber];
+
+
+            document.getElementById("result").textContent =
+                "You should eat: " + selectedFood.name;
+
+
+            document.getElementById("description").textContent =
+                selectedFood.description;
+
+
+            document.getElementById("foodType").textContent =
+                selectedFood.type == "veg"
+                ? "Vegetarian"
+                : "Non-Vegetarian";
+
+
+
+            let image = document.getElementById("foodImage");
+
+            image.style.display = "none";
+
+            image.onerror = function() {
+                image.style.display = "none";
+            };
+
+            image.onload = function() {
+                image.style.display = "block";
+            };
+
+            image.src = selectedFood.image;
+
+        }
+
+
+
+        function tryAgain() {
+
+            if (currentMode == "lucky") {
+
+                luckyFood();
+
+            } else {
+
+                pickFood();
+
+            }
+
+        }
+
+
+        function addFavourite() {
+
+            if (selectedFood == null) {
+
+                alert("Please select a food first!");
+
+                return;
+
+            }
+
+            if (!favourites.includes(selectedFood)) {
+
+                favourites.push(selectedFood);
+
+                displayFavourites();
+
+            } else {
+
+                alert("This food is already in your favourites!");
+
+            }
+
+        }
+
+
+        function displayFavourites() {
+
+            let list =
+                document.getElementById("favourites");
+
+            list.innerHTML = "";
+
+            favourites.forEach(function(food, index) {
+
+                let item = document.createElement("li");
+
+                item.textContent = food.name + " ";
+
+                let removeButton =
+                    document.createElement("button");
+
+                removeButton.textContent = "Remove";
+
+                removeButton.className = "remove-button";
+
+                removeButton.onclick = function() {
+
+                    removeFavourite(index);
+
+                };
+
+                item.appendChild(removeButton);
+
+                list.appendChild(item);
+
+            });
+
+        }
+
+
+
+        function removeFavourite(index) {
+
+            favourites.splice(index, 1);
+
+            displayFavourites();
+
         }
 
     </script>
 
 </body>
+
 </html>
