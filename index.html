@@ -484,12 +484,12 @@
         let selectedFood = null;
         let favourites = [];
         let surpriseMode = false;
-        function chooseFood(isSurprise) {
+        function chooseFood(isSurprise){
             surpriseMode = isSurprise;
             let category = document.getElementById("category").value;
             let type = document.getElementById("type").value;
             let availableFoods = [];
-            for (let i = 0; i < foods.length; i++) {
+            for (let i = 0; i < foods.length; i++){
                 let food = foods[i];
                 let matchesCategory = isSurprise || category == "all" || food.category == category;
                 let matchesType = type == "all" || food.type == type;
@@ -497,7 +497,7 @@
                     availableFoods.push(food);
                 }
             }
-            if (availableFoods.length == 0) {
+            if (availableFoods.length == 0){
                 document.getElementById("result").textContent = "No food found!";
                 document.getElementById("foodImage").style.display = "none";
                 document.getElementById("description").textContent = "Try changing your filters.";
@@ -517,52 +517,52 @@
             let image = document.getElementById("foodImage");
             let currentFood = selectedFood;
             image.style.display = "none";
-            image.onerror = function () {
+            image.onerror = function (){
                 image.style.display = "none";
-                if (selectedFood == currentFood) {
+                if (selectedFood == currentFood){
                     document.getElementById("description").textContent =
                         currentFood.description + " (Photo could not load.)";
                 }
             };
-            image.onload = function () {
-                if (selectedFood == currentFood) {
+            image.onload = function (){
+                if (selectedFood == currentFood){
                     image.style.display = "block";
                 }
             };
             image.src = selectedFood.image;
         }
-        function tryAgain() {
+        function tryAgain(){
             chooseFood(surpriseMode);
         }
-        function addFavourite() {
-            if (selectedFood == null) {
+        function addFavourite(){
+            if (selectedFood == null){
                 alert("Please select a food first!");
                 return;
             }
-            if (favourites.includes(selectedFood)) {
+            if (favourites.includes(selectedFood)){
                 alert("This food is already in your favourites!");
                 return;
             }
             favourites.push(selectedFood);
             displayFavourites();
         }
-        function displayFavourites() {
+        function displayFavourites(){
             let list = document.getElementById("favourites");
             list.innerHTML = "";
-            for (let i = 0; i < favourites.length; i++) {
+            for (let i = 0; i < favourites.length; i++){
                 let item = document.createElement("li");
                 item.textContent = favourites[i].name + " ";
                 let removeButton = document.createElement("button");
                 removeButton.textContent = "Remove";
                 removeButton.className = "remove-button";
-                removeButton.onclick = function () {
+                removeButton.onclick = function (){
                     removeFavourite(i);
                 };
                 item.appendChild(removeButton);
                 list.appendChild(item);
             }
         }
-        function removeFavourite(index) {
+        function removeFavourite(index){
             favourites.splice(index, 1);
             displayFavourites();
         }
