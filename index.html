@@ -5,54 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Picker</title>
-
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            padding: 30px 16px 48px;
-            text-align: center;
-            font-family: Arial, sans-serif;
-            color: #fff0dc;
-            background-color: #160d0d;
-            background-image: linear-gradient(rgba(18, 8, 8, 0.78), rgba(35, 13, 12, 0.72)),
+        *{
+            box-sizing:border-box;}
+        body{
+            margin:0;
+            min-height:100vh;
+            padding:30px 16px 48px;
+            text-align:center;
+            font-family:Arial, sans-serif;
+            color:#fff0dc;
+            background-color:#160d0d;
+            background-image:linear-gradient(rgba(18, 8, 8, 0.78), rgba(35, 13, 12, 0.72)),
                 url("https://media1.tenor.com/m/fWy0Ufdg9dcAAAAd/wtf-so-delicious-yummy.gif");
-            background-position: center;
-            background-size: cover;
-            background-attachment: fixed;
-        }
-
-        h1 {
+            background-position:center;
+            background-size:cover;
+            background-attachment:fixed;}
+        h1{
             margin: 10px 0;
             color: #f4d7a1;
-            font-size: 48px;
-        }
-
-        h2 {
-            color: #f4d7a1;
-        }
-
-        .subtitle {
+            font-size: 48px;}
+        h2{
+            color: #f4d7a1;}
+        .subtitle{
             color: #f0d8c7;
             font-size: 18px;
-            margin-bottom: 25px;
-        }
+            margin-bottom: 25px;}
 
-        .container, .favourite {
+        .container, .favourite{
             max-width: 650px;
             margin: 24px auto;
             padding: 25px;
             border: 1px solid #a94c39;
             border-radius: 18px;
             background: rgba(20, 13, 14, 0.93);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        select {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);}
+        select{
             width: 90%;
             max-width: 440px;
             margin: 9px;
@@ -61,10 +49,8 @@
             border-radius: 9px;
             background: #301917;
             color: #fff0dc;
-            font-size: 16px;
-        }
-
-        button {
+            font-size: 16px;}
+        button{
             margin: 8px 5px;
             padding: 12px 20px;
             border: none;
@@ -73,21 +59,15 @@
             color: white;
             font-size: 15px;
             font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #f07850;
-        }
-
-        .food-card {
+            cursor: pointer;}
+        button:hover{
+            background: #f07850;}
+        .food-card{
             margin-top: 25px;
             padding: 20px;
             border: 1px solid #713b30;
             border-radius: 15px;
-            background: rgba(34, 19, 18, 0.96);
-        }
-
+            background: rgba(34, 19, 18, 0.96);}
         .food-card img {
             width: 100%;
             max-width: 430px;
@@ -96,71 +76,46 @@
             object-fit: cover;
             border-radius: 12px;
             border: 2px solid #a94c39;
-            filter: brightness(0.85) contrast(1.08) saturate(1.1);
-        }
-
-        #result {
+            filter: brightness(0.85) contrast(1.08) saturate(1.1);}
+        #result{
             color: #f4d7a1;
             font-size: 25px;
-            font-weight: bold;
-        }
-
-        #description {
+            font-weight: bold;}
+        #description{
             color: #e4d0c5;
             font-size: 16px;
-            line-height: 1.6;
-        }
-
-        #foodType {
+            line-height: 1.6;}
+        #foodType{
             color: #f28a65;
-            font-weight: bold;
-        }
-
-        .favourite ul {
-            padding: 0;
-        }
-
-        .favourite li {
+            font-weight: bold;}
+        .favourite ul{
+            padding: 0;}
+        .favourite li{
             list-style: none;
             margin: 12px;
             color: #f4dfd1;
-            font-weight: bold;
-        }
-
-        .remove-button {
+            font-weight: bold;}
+        .remove-button{
             background: #7f302b;
-            padding: 8px 12px;
-        }
-
+            padding: 8px 12px;}
         @media (max-width: 600px) {
-            body {
+            body{
                 padding: 18px 10px 30px;
-                background-attachment: scroll;
-            }
-
-            .container, .favourite {
-                padding: 17px;
-            }
-
-            .food-card img {
-                height: 210px;
-            }
+                background-attachment: scroll;}
+            .container, .favourite{
+                padding: 17px;}
+            .food-card img{
+                height: 210px;}
         }
     </style>
 </head>
-
 <body>
-
     <h1>Food Picker</h1>
-
     <p class="subtitle">
         Yummy ideas for your next meal!
     </p>
-
     <div class="container">
-
         <h2>What Would You Like to Eat?</h2>
-
         <select id="category">
             <option value="all">All Categories</option>
             <option value="breakfast">Breakfast</option>
@@ -168,62 +123,41 @@
             <option value="dinner">Dinner</option>
             <option value="snacks">Snacks</option>
         </select>
-
         <br>
-
         <select id="type">
             <option value="all">All Food Types</option>
             <option value="veg">Vegetarian</option>
             <option value="nonveg">Non-Vegetarian</option>
         </select>
-
         <br>
-
         <button onclick="chooseFood(false)">
             Suggest My Food
         </button>
-
         <button onclick="chooseFood(true)">
             Surprise Me!
         </button>
-
         <div class="food-card">
-
             <img id="foodImage" style="display:none;"
                  alt="Photograph of the recommended dish">
-
             <p id="result">
                 Your food will appear here!
             </p>
-
             <p id="description"></p>
-
             <p id="foodType"></p>
-
             <button onclick="addFavourite()">
                 Add to Favourite
             </button>
-
             <button onclick="tryAgain()">
                 Try Again
             </button>
-
         </div>
     </div>
-
     <div class="favourite">
-
         <h2>My Favourite Foods</h2>
-
         <ul id="favourites"></ul>
-
     </div>
-
     <script>
-
         let foods = [
-
-
     {
         name: "Dosa",
         category: "breakfast",
@@ -547,136 +481,91 @@
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Fish%20fingers.jpg"
     }
 ];
-
         let selectedFood = null;
         let favourites = [];
         let surpriseMode = false;
-
         function chooseFood(isSurprise) {
-
             surpriseMode = isSurprise;
-
             let category = document.getElementById("category").value;
             let type = document.getElementById("type").value;
-
             let availableFoods = [];
-
             for (let i = 0; i < foods.length; i++) {
-
                 let food = foods[i];
-
                 let matchesCategory = isSurprise || category == "all" || food.category == category;
                 let matchesType = type == "all" || food.type == type;
-
                 if (matchesCategory && matchesType) {
                     availableFoods.push(food);
                 }
             }
-
             if (availableFoods.length == 0) {
-
                 document.getElementById("result").textContent = "No food found!";
                 document.getElementById("foodImage").style.display = "none";
                 document.getElementById("description").textContent = "Try changing your filters.";
                 document.getElementById("foodType").textContent = "";
-
                 selectedFood = null;
-
                 return;
             }
-
             let randomNumber = Math.floor(Math.random() * availableFoods.length);
-
             selectedFood = availableFoods[randomNumber];
-
             document.getElementById("result").textContent = "You should eat: " + selectedFood.name;
             document.getElementById("description").textContent = selectedFood.description;
-
             if (selectedFood.type == "veg") {
                 document.getElementById("foodType").textContent = "Vegetarian";
             } else {
                 document.getElementById("foodType").textContent = "Non-Vegetarian";
             }
-
             let image = document.getElementById("foodImage");
             let currentFood = selectedFood;
-
             image.style.display = "none";
-
             image.onerror = function () {
                 image.style.display = "none";
-
                 if (selectedFood == currentFood) {
                     document.getElementById("description").textContent =
                         currentFood.description + " (Photo could not load.)";
                 }
             };
-
             image.onload = function () {
                 if (selectedFood == currentFood) {
                     image.style.display = "block";
                 }
             };
-
             image.src = selectedFood.image;
         }
-
         function tryAgain() {
             chooseFood(surpriseMode);
         }
-
         function addFavourite() {
-
             if (selectedFood == null) {
                 alert("Please select a food first!");
                 return;
             }
-
             if (favourites.includes(selectedFood)) {
                 alert("This food is already in your favourites!");
                 return;
             }
-
             favourites.push(selectedFood);
-
             displayFavourites();
         }
-
         function displayFavourites() {
-
             let list = document.getElementById("favourites");
-
             list.innerHTML = "";
-
             for (let i = 0; i < favourites.length; i++) {
-
                 let item = document.createElement("li");
-
                 item.textContent = favourites[i].name + " ";
-
                 let removeButton = document.createElement("button");
-
                 removeButton.textContent = "Remove";
                 removeButton.className = "remove-button";
-
                 removeButton.onclick = function () {
                     removeFavourite(i);
                 };
-
                 item.appendChild(removeButton);
-
                 list.appendChild(item);
             }
         }
-
         function removeFavourite(index) {
-
             favourites.splice(index, 1);
-
             displayFavourites();
         }
-
     </script>
-
 </body>
 </html>
