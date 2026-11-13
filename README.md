@@ -24,6 +24,7 @@ This is our Web Development Lab project. Food Picker is a simple website that he
 - Student 1 – Team Lead – Krishna Vidhyarthi – USN: 245
 - Student 2 – Member – Dibakar Das – USN: 295
 - Student 3 - Member - Sanapala Koushik - USN:265
+- Student 4 - Member - Harshit kumar - USN:139
 
 ## What We Learned
 - Creating GitHub repositories
